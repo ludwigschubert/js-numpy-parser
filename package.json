@@ -1,0 +1,28 @@
+{
+  "name": "numpy-parser",
+  "version": "1.0.0",
+  "description": "A JS parser for binary .npy files.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludwigschubert/js-numpy-parser.git"
+  },
+  "keywords": [
+    "javascript",
+    "numpy",
+    "npy",
+    "parser"
+  ],
+  "author": "Ludwig Schubert",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ludwigschubert/js-numpy-parser/issues"
+  },
+  "homepage": "https://github.com/ludwigschubert/js-numpy-parser#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
