@@ -6,11 +6,10 @@ export function fromArrayBuffer(buffer) {
     throw new Error('Argument must be an ArrayBuffer.');
   }
   const reader = new DataViewReader(buffer);
-  const ascii = new TextDecoder('ascii');
   // comments are taken from https://docs.scipy.org/doc/numpy-1.14.1/neps/npy-format.html#format-specification-version-1-0
   // "The first 6 bytes are a magic string: exactly "x93NUMPY""
   const magicByte = reader.readUint8();
-  const magicWord = ascii.decode(reader.readBytes(5));
+  const magicWord = reader.readAndASCIIDecodeBytes(5);
   if (magicByte != 0x93 || magicWord != 'NUMPY') {
       throw new Error(`unknown file type: "${magicByte}${magicWord}"`);
   }
@@ -35,7 +34,7 @@ export function fromArrayBuffer(buffer) {
   if (preludeLength % 16 != 0) {
     console.warn(`NPY file header is incorrectly padded. (${preludeLength} is not evenly divisible by 16.)`)
   }
-	const headerStr = ascii.decode(reader.readBytes(headerLength));
+	const headerStr = reader.readAndASCIIDecodeBytes(headerLength);
   const header = parseHeaderStr(headerStr);
   if (header.fortran_order) {
     throw new Error('NPY file is written in Fortran byte order, support for this byte order is not yet implemented.')

@@ -18,6 +18,12 @@ export default class DataViewReader {
     return buffer;
   }
 
+  readAndASCIIDecodeBytes(length) {
+    const array = new Uint8Array(this.dataView.buffer, this.offset, length)
+    this.offset += length;
+    return this._decodeASCIIByteArray(array);
+  }
+
   /* Fixed length accessors */
 
   readUint8(littleEndian = false) {
@@ -36,5 +42,16 @@ export default class DataViewReader {
     const value = this.dataView.getUint32(this.offset, littleEndian);
     this.offset += Uint32Array.BYTES_PER_ELEMENT;
     return value;
+  }
+
+  /* Helpers */
+
+  _decodeASCIIByteArray(array) {
+    const characters = []
+    for (const byte of array) {
+      const char = String.fromCharCode(byte);
+      characters.push(char);
+    }
+    return characters.join('');
   }
 }
