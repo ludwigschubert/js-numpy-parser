@@ -2,10 +2,11 @@
   "name": "numpy-parser",
   "version": "1.1.0",
   "description": "A JS parser for binary .npy files.",
-  "main": "src/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require @babel/register \"test/**/*.spec.js\"",
-    "watch": "./node_modules/.bin/mocha --watch --require @babel/register \"test/**/*.spec.js\""
+    "build": "BABEL_ENV=production ./node_modules/.bin/babel src/ --out-dir dist/ --source-maps",
+    "prepublish": "npm run-script build"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,12 @@
   },
   "homepage": "https://github.com/ludwigschubert/js-numpy-parser#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
+    "babel-minify": "^0.5.0",
+    "babel-preset-minify": "^0.5.0",
     "mocha": "^5.2.0"
   }
 }
