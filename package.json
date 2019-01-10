@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --require @babel/register \"test/**/*.spec.js\"",
     "build": "BABEL_ENV=production ./node_modules/.bin/babel src/ --out-dir dist/ --source-maps",
-    "prepublish": "npm run-script build"
+    "prepublishOnly": "npm run-script build"
   },
   "repository": {
     "type": "git",

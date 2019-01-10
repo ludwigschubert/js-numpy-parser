@@ -1,9 +1,10 @@
+dist: xenial
 language: node_js
 node_js:
-- stable
-- '6'
+- node
 deploy:
   provider: npm
+  skip_cleanup: true
   email: ludwig@cs.stanford.edu
   api_key:
     secure: lbM7a1kno5EIy0XTU21CyitD3JmzlkRY+vG0Xq1bTSYvcU1GjNqQoXbyS47Gp3fD2xMbt98BQiIoFQKzuPyogEj4fb30rtSDfH4mXegOxyWqvPmOurvR+sPtMMWwQTr14MfZpGWpBc8w3PsIj+r7aYydtzdMcxF7A95wqXuGip+klM74ooNr3XWIz/Kc0yZGC5k90tYuH3qtgO97rz//JfgRhIB/Qn4Brh1pJ5oG2m91EAZ0SFDLoDsxs05PXUtwFUj8q6I9fD+pGvkNYl+IIGzz9cooEvvcskeEC7eYtYxMhc3NKwXUh5z+ty1RdkdW2Mu/MwKKs3/O5VCW7+c20aG2EI5+J7X1nplgIkK842RX5+0yYMX8rJRsukUF3ZcXROudJyqMv2rgoTU458eD6mKq9RNaMDvET4CaTLH+bVZlBQ643ySg4Gxjdj1LEqXS5GeddYlM67PIoWYkyJh9Ia5JXk4LOYvkFkhS7YPyRWZImfwc9yai877OmJ/uTnvihATjwbzt9QCvYQwEjZNqtm2JXyz7t9hbLkkF2TMPmpLoV6pRZyc4pKq5xg21I47bLhDAdsRNE2CqkvuXtftj+BoKOjs2qmOXbmwBXCmfk8R41znIbUIIp1U60p5lBSL1zlsnJwyFYw4ghE8/JpPRVdOzMfuvCeZ2/U++h80UlCM=
