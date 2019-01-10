@@ -19,6 +19,8 @@ js_typed_array_dtypes = [
 ]
 
 os.makedirs(FOLDER, exist_ok=True)
+
+# write number test cases
 for dtype, shape in product(js_typed_array_dtypes, shapes):
 
     # create random data with enough structure to check if parsing was successful
@@ -29,7 +31,7 @@ for dtype, shape in product(js_typed_array_dtypes, shapes):
     else:
         # create random unsigend integers summing to 42 or -42
         n = np.prod(shape)
-        values = np.random.multinomial(42, np.ones((n,))/n, size=(n,))[0].reshape(shape)
+        values = np.random.multinomial(42, np.ones((n,)) / n, size=(n,))[0].reshape(shape)
         if issubclass(dtype, np.signedinteger):
             values = -values
 
