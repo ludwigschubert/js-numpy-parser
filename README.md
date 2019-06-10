@@ -13,7 +13,7 @@ npm install --save numpy-parser
 
 ## Example usage
 
-```
+```js
 import { fromArrayBuffer } from "numpy-parser";
 
 const url = …
@@ -24,7 +24,7 @@ const { data, shape } = fromArrayBuffer(arrayBuffer);
 
 For ergonomic usage I recommend wrapping this in, e.g. [this ndarray implementation](https://github.com/scijs/ndarray):
 
-```
+```js
 import ndarray from "ndarray";
 const array = ndarray(data, shape);
 ```
