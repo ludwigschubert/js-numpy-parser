@@ -107,7 +107,7 @@ function parseHeaderStr(headerStr) {
   const jsonHeader = headerStr
     .toLowerCase() // boolean literals: False -> false
     .replace('(','[').replace('),',']') // Python tuple to JS array: (10,) -> [10,]
-    .replace('[,','[1,]').replace(',]',',1]') // implicit dimensions: [10,] -> [10,1]
+    .replace(',]',']') // trailing comma (for 1-d array): [10,] -> [10]
     .replace(/'/g, '"'); // single quotes -> double quotes
   return JSON.parse(jsonHeader);
 }

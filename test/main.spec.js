@@ -21,11 +21,14 @@ describe('NumpyParser', () => {
 
     const dtypes = ["float32", "float64", "int8", "int16", "int32", "uint8", "uint16", "uint32"];
     const shapes = ["(1,)", "(4,)", "(1, 4)", "(4, 4)", "(4, 4, 4)"];
+    const jsShapes = [[1], [4], [1, 4], [4, 4], [4, 4, 4]];
     dtypes.forEach(function(dtype) {
-      shapes.forEach(function(shape) {
+      shapes.forEach(function(shape, si) {
         it('correctly parsers a ' + dtype + ' array of shape ' + shape, () => {
           const arrayBuffer = loadArrayBuffer(`./test/data/${dtype}-${shape}.npy`);
-          const { data: array } = fromArrayBuffer(arrayBuffer);
+          const { data: array, shape: gotShape } = fromArrayBuffer(arrayBuffer);
+
+          assert.deepEqual(gotShape, jsShapes[si]);
 
           if (dtype.includes("uint")) {
             assert.equal(sum(array), 42);
